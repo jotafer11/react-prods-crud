@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+.row {
+  max-width: 800px;  
+  margin-left: 200px !important;
+  
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -15,7 +21,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;

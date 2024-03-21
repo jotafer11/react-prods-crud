@@ -21,7 +21,7 @@ const CompShowProducts = () => {
     // eliminar un prod
 
     const deleteProduct = async (id) => {
-        axios.delete(`${URI}${id}`)
+        await axios.delete(`${URI}${id}`)
         getProducts()
     }
 
@@ -31,40 +31,30 @@ const CompShowProducts = () => {
                 <div className='col mt-5'>
 
                 <Link to="/create" className="btn btn-primary"><i className="fa-solid fa-plus"></i> </Link>                    
+                    <table className='table table table-sm mt-3'>
+                            <thead className='table-primary table-sm'>
+                                <tr>
+                                    <th>NAME</th>
+                                    <th>SKU</th>
+                                    <th>QTY</th>
+                                    <th>ACTIONS</th>
+                                </tr>
 
-                <table className='table table table-sm mt-3'>
-                    <thead className='table-primary table-sm'>
-                        <tr>
-                            <th>NAME</th>
-                            <th>SKU</th>
-                            <th>ACTIONS</th>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                        { products.map ( (product) => ( 
-                        
-                            <tr key={product.id}>
-                                
-                                <td>{ product.name }</td>
-                                <td>{ product.sku }</td>
-                                <td className="text-center">
-
-                                    <button type="button" className="btn btn-info btn-sm"><i className="fa-solid fa-pen-to-square"></i></button>
-                                    <button type="button" className="btn btn-danger btn-sm"><i className="fa-solid fa-trash"></i></button>
-                                    
-                                </td>
-
-                            </tr>
-
-                        
-                        
-                        )) }
-
-                    </tbody>
-                </table>
-
-
+                            </thead>
+                            <tbody>
+                                { products.map ( (product) => ( 
+                                    <tr key={product.id}>
+                                        <td>{ product.name }</td>
+                                        <td>{ product.sku }</td>
+                                        <td>{ product.qty }</td>
+                                        <td className="text-center">
+                                            <Link to={`/edit/${product.id}`} className="btn btn-info btn-sm"><i className="fa-solid fa-pen-to-square"></i></Link>
+                                            <button onClick={ ()=>deleteProduct(product.id) } className="btn btn-danger btn-sm"><i className="fa-solid fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                )) }
+                            </tbody>
+                    </table>
 
                 </div>
             </div>
